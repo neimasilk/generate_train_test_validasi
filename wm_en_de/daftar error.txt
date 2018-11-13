@@ -1,0 +1,8 @@
+HTTP Error 503: Service Unavailable             # rolling
+timed out                                       # rolling
+Remote end closed connection without response   # rolling
+<urlopen error timed out>                       # rolling
+HTTP Error 503: Too many open connections       # rolling
+<urlopen error [Errno 111] Connection refused>  # rolling
+Expecting value: line 1 column 1 (char 0)       # delete
+HTTP Error 502: Bad Gateway                     # delete
