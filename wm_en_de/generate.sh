@@ -109,7 +109,7 @@ fi
 # Tokenize data
 for f in ${OUTPUT_DIR}/*.id; do
   echo "Tokenizing $f..."
-  ${OUTPUT_DIR}/mosesdecoder/scripts/tokenizer/tokenizer.perl -q -l de -threads 8 < $f > ${f%.*}.tok.de
+  ${OUTPUT_DIR}/mosesdecoder/scripts/tokenizer/tokenizer.perl -q -l de -threads 8 < $f > ${f%.*}.tok.id
 done
 
 for f in ${OUTPUT_DIR}/*.en; do

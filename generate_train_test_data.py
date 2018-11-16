@@ -27,7 +27,7 @@ def generate(test_persen):
     db_connection = sqlite3.connect(filepath)
     db_cur = db_connection.cursor()  # type: Cursor
     db_cur.execute(
-        "select id, text_id, text_en_id, text_zhcn from id_zhcn where (text_en_id is not NULL) and (text_zhcn is not NULL) and (text_id is not NULL) order by random() ")
+        "select id, tok_id, text_en_id, text_zhcn from id_zhcn where (text_en_id is not NULL) and (text_zhcn is not NULL) and (tok_id is not NULL) order by random() ")
     textnya = db_cur.fetchall()
     train_persen = 100-test_persen
     jumlah_data = len(textnya)
