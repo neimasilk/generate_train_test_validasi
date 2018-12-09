@@ -27,7 +27,7 @@ def generate(test_persen):
     db_connection = sqlite3.connect(filepath)
     db_cur = db_connection.cursor()  # type: Cursor
     db_cur.execute(
-        "select id, tok_id, text_en_id, text_zhcn from id_zhcn where (text_en_id is not NULL) and (text_zhcn is not NULL) and (tok_id is not NULL) order by random() ")
+        "select id, tok_id, text_en_id, text_zhcn, text_id from id_zhcn where (text_en_id is not NULL) and (text_zhcn is not NULL) and (tok_id is not NULL) and (text_id is not NULL) order by random() ")
     textnya = db_cur.fetchall()
     train_persen = 100-test_persen
     jumlah_data = len(textnya)
@@ -41,15 +41,18 @@ def generate(test_persen):
     test_range.sort()
     for text in textnya:
         if test_range[count_test]==train_count:
-            add_to_text_file('test.id.txt', text[1].strip())
-            add_to_text_file('test.en.txt', text[2].strip())
+            add_to_text_file('test.tok.id', text[1].strip())
+            add_to_text_file('test.en', text[2].strip())
             add_to_text_file('test.zhcn.txt', text[3].strip())
+            add_to_text_file('test.id', text[4].strip())
             if count_test<testing_data-1:
                 count_test+=1
-        add_to_text_file('train.id.txt', text[1].strip())
-        add_to_text_file('train.en.txt', text[2].strip())
-        add_to_text_file('train.zhcn.txt', text[3].strip())
+        else:
+            add_to_text_file('train.tok.id', text[1].strip())
+            add_to_text_file('train.en', text[2].strip())
+            add_to_text_file('train.zhcn.txt', text[3].strip())
+            add_to_text_file('train.id', text[4].strip())
         train_count+=1
 
 if __name__ == '__main__':
-    generate(0.4)
+    generate(0.1)
